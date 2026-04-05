@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>193 Studio Playground</title>
+  <meta name="description" content="Playground для проверки адаптаций 193 Studio на разных экранах." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="playground.css?v=20260404-2" />
+</head>
+<body>
+  <div class="playground-shell">
+    <aside class="playground-sidebar">
+      <div class="sidebar-block">
+        <p class="eyebrow">193 Studio</p>
+        <h1>Responsive Playground</h1>
+        <p class="sidebar-copy">Проверяем текущую верстку в живом iframe без правок в основном макете. Можно быстро гонять mobile, tablet, desktop и кастомные размеры.</p>
+      </div>
+
+      <div class="sidebar-block">
+        <p class="block-title">Пресеты</p>
+        <div class="preset-grid" id="presetGrid">
+          <button class="preset-button is-active" data-width="1440" data-height="900">Desktop 1440</button>
+          <button class="preset-button" data-width="1280" data-height="800">Laptop 1280</button>
+          <button class="preset-button" data-width="1024" data-height="1366">Tablet</button>
+          <button class="preset-button" data-width="820" data-height="1180">Tablet Small</button>
+          <button class="preset-button" data-width="430" data-height="932">Mobile Pro</button>
+          <button class="preset-button" data-width="390" data-height="844">iPhone</button>
+          <button class="preset-button" data-width="375" data-height="812">Mobile 375</button>
+          <button class="preset-button" data-width="360" data-height="800">Small 360</button>
+        </div>
+      </div>
+
+      <div class="sidebar-block">
+        <p class="block-title">Кастомный экран</p>
+        <div class="custom-grid">
+          <label class="field">
+            <span>Ширина</span>
+            <input id="widthInput" type="number" min="280" max="2560" step="1" value="1440" />
+          </label>
+          <label class="field">
+            <span>Высота</span>
+            <input id="heightInput" type="number" min="480" max="1800" step="1" value="900" />
+          </label>
+        </div>
+        <div class="action-row">
+          <button class="ghost-button" id="applyCustom">Применить</button>
+          <button class="ghost-button" id="swapViewport">Повернуть</button>
+        </div>
+      </div>
+
+      <div class="sidebar-block">
+        <p class="block-title">Просмотр</p>
+        <label class="toggle">
+          <input id="autoFitToggle" type="checkbox" checked />
+          <span>Автоподгонка в окно</span>
+        </label>
+        <label class="field range-field">
+          <span>Масштаб</span>
+          <input id="zoomRange" type="range" min="35" max="100" step="1" value="100" />
+        </label>
+        <div class="action-row">
+          <button class="ghost-button" id="reloadFrame">Обновить preview</button>
+          <a class="ghost-button link-button" href="./index.html" target="_blank" rel="noreferrer">Открыть отдельно</a>
+        </div>
+      </div>
+
+      <div class="sidebar-block sidebar-meta">
+        <div class="meta-row">
+          <span>Viewport</span>
+          <strong id="viewportLabel">1440 × 900</strong>
+        </div>
+        <div class="meta-row">
+          <span>Breakpoint</span>
+          <strong id="breakpointLabel">Desktop</strong>
+        </div>
+        <div class="meta-row">
+          <span>Scale</span>
+          <strong id="scaleLabel">100%</strong>
+        </div>
+      </div>
+    </aside>
+
+    <main class="playground-stage">
+      <header class="stage-toolbar">
+        <div>
+          <p class="eyebrow">Live Preview</p>
+          <h2>Текущий `index.html` в iframe</h2>
+        </div>
+        <div class="toolbar-pill" id="toolbarPill">Desktop</div>
+      </header>
+
+      <div class="stage-canvas" id="stageCanvas">
+        <div class="viewport-frame" id="viewportFrame">
+          <div class="viewport-chrome">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <iframe
+            id="previewFrame"
+            class="preview-frame"
+            title="193 Studio preview"
+            src="./index.html"
+            loading="eager"></iframe>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="playground.js?v=20260404-2"></script>
+</body>
+</html>
