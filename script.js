@@ -58,6 +58,7 @@ let introState = 'idle';
 let introCleanupTimer = null;
 let introStartTimer = null;
 let introHoldTimer = null;
+let introFinalizeTimer = null;
 let textRiseNodes = [];
 
 function setupTextRise() {
@@ -209,6 +210,10 @@ function finishIntro(immediate = false) {
   document.body.classList.add('intro-ending');
 
   const finalize = () => {
+    if (introFinalizeTimer) {
+      window.clearTimeout(introFinalizeTimer);
+      introFinalizeTimer = null;
+    }
     document.body.classList.remove('intro-lock', 'intro-active', 'intro-ending');
     document.body.classList.add('intro-complete');
     document.body.classList.add('hero-live');
@@ -229,7 +234,7 @@ function finishIntro(immediate = false) {
     return;
   }
 
-  window.setTimeout(finalize, 560);
+  introFinalizeTimer = window.setTimeout(finalize, 560);
 }
 
 function playIntro() {
@@ -599,7 +604,9 @@ requestTick();
 
 syncIntroToHero();
 introCleanupTimer = window.setTimeout(() => {
-  if (introState !== 'done' && introState !== 'playing') {
+  // If the intro gets stuck in a throttled tab or a stalled RAF loop,
+  // force it to settle so the page never remains covered.
+  if (introState !== 'done') {
     finishIntro(true);
   }
 }, 2600);
