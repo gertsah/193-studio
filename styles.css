@@ -1597,17 +1597,34 @@ body.hero-live .code-line {
     width: min(88vw, 680px);
   }
 
-  .stack-pin {
+  .stack-scene,
+  .story-stage,
+  .projects,
+  .manifest,
+  .contact {
+    overflow: visible;
+  }
+
+  .hero-pin {
     position: relative;
     top: 0;
     min-height: auto;
   }
 
-  .story-stage,
+  .story-stage {
+    min-height: 185svh;
+    margin-top: -16svh;
+  }
+
+  .stage-branding {
+    margin-top: -20svh;
+  }
+
   .projects,
   .manifest,
   .contact {
-    margin-top: 0;
+    min-height: 145svh;
+    margin-top: -12svh;
   }
 
   .stage-pin,
@@ -1737,13 +1754,13 @@ body.hero-live .code-line {
   }
 
   .story-stage {
-    min-height: auto;
+    min-height: 185svh;
   }
 
   .stage-pin {
-    position: relative;
-    top: 0;
-    min-height: auto;
+    position: sticky;
+    top: 60px;
+    min-height: calc(100svh - 60px);
     gap: 1rem;
     padding: 1.8rem 0 1.95rem;
   }
@@ -1868,15 +1885,23 @@ body.hero-live .code-line {
   .projects,
   .manifest,
   .contact {
-    min-height: auto;
+    min-height: 145svh;
   }
 
   .projects-head h2 {
     font-size: clamp(1.28rem, 7vw, 1.9rem);
   }
 
+  .projects-pin,
+  .manifest-pin,
+  .contact-pin {
+    position: sticky;
+    top: 60px;
+    min-height: calc(100svh - 60px);
+  }
+
   .projects-surface {
-    min-height: auto;
+    min-height: calc(100svh - 60px);
     padding: 2.8rem 0;
   }
 
@@ -1891,7 +1916,7 @@ body.hero-live .code-line {
 
   .manifest-surface,
   .contact-surface {
-    min-height: auto;
+    min-height: calc(100svh - 60px);
     padding-top: 3rem;
   }
 
@@ -2008,8 +2033,36 @@ body.hero-live .code-line {
   }
 
   .stage-pin {
+    top: 56px;
+    min-height: calc(100svh - 56px);
     gap: 0.82rem;
     padding: 1.5rem 0 1.65rem;
+  }
+
+  .projects,
+  .manifest,
+  .contact {
+    min-height: 140svh;
+    margin-top: -10svh;
+  }
+
+  .story-stage {
+    min-height: 175svh;
+    margin-top: -14svh;
+  }
+
+  .stage-branding {
+    margin-top: -18svh;
+  }
+
+  .projects-pin,
+  .manifest-pin,
+  .contact-pin,
+  .projects-surface,
+  .manifest-surface,
+  .contact-surface {
+    top: 56px;
+    min-height: calc(100svh - 56px);
   }
 
   .stage-title span {
